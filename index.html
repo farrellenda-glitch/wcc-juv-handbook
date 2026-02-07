@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whitehall Colmcille Mobile Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --wcc-red: #CC0000;
+            --wcc-white: #FFFFFF;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f9fa;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .bg-wcc-red { background-color: var(--wcc-red); }
+        .text-wcc-red { color: var(--wcc-red); }
+        .border-wcc-red { border-color: var(--wcc-red); }
+        
+        #mobile-menu {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-100%);
+        }
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .nested-menu-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #fcfcfc;
+        }
+        .nested-menu-content.active {
+            max-height: 1000px;
+        }
+        
+        .card { @apply bg-white rounded-xl shadow-sm p-5 mb-4 border border-gray-100; }
+        .badge-red { @apply bg-red-100 text-red-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase; }
+        .section-title { @apply text-xs font-bold text-wcc-red uppercase tracking-wider mb-2; }
+
+        /* Ensure smooth scrolling when switching pages */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-wcc-red text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-md mx-auto px-4 py-3 flex justify-between items-center">
+            <button id="menu-toggle" class="p-2 focus:outline-none touch-manipulation">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            <div class="flex flex-col items-center">
+                <div class="h-14 flex items-center justify-center py-1">
+                    <img src="https://whitehallcolmcille.ie/wp-content/uploads/2019/06/logo.png" 
+                         alt="Whitehall Colmcille Logo" 
+                         class="h-full w-auto drop-shadow-sm"
+                         onerror="this.src='https://www.gaa.ie/api/images/image/private/t_q-best/v1537278276/gaa-production/assets/crests/dublin/whitehall-colmcille.png'">
+                </div>
+                <span class="text-[9px] font-bold uppercase tracking-widest opacity-90 mt-0.5">Juvenile Handbook</span>
+            </div>
+            <div class="w-10"></div>
+        </div>
+    </header>
+
+    <!-- Side Navigation Overlay -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden"></div>
+    
+    <!-- Side Navigation Menu -->
+    <nav id="mobile-menu" class="fixed top-0 left-0 h-full w-4/5 max-w-xs bg-white z-[70] shadow-2xl overflow-y-auto">
+        <div class="p-5 bg-wcc-red text-white flex justify-between items-center sticky top-0">
+            <h2 class="font-bold">Handbook Index</h2>
+            <button id="close-menu" class="text-2xl p-2">&times;</button>
+        </div>
+        
+        <div class="py-2">
+            <a href="javascript:void(0)" onclick="showPage('home')" class="flex items-center px-6 py-4 border-b border-gray-50">
+                <i class="fas fa-home w-8 text-wcc-red"></i>
+                <span class="font-medium">Home & Vision</span>
+            </a>
+
+            <!-- Juvenile Structure -->
+            <div>
+                <button onclick="toggleNested('sec1-nested')" class="w-full flex items-center justify-between px-6 py-4 border-b border-gray-50 text-left">
+                    <div class="flex items-center">
+                        <i class="fas fa-sitemap w-8 text-wcc-red"></i>
+                        <span class="font-medium">Juvenile Structure</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs text-gray-400"></i>
+                </button>
+                <div id="sec1-nested" class="nested-menu-content">
+                    <a href="javascript:void(0)" onclick="showPage('roles')" class="block pl-14 py-3 text-sm border-b border-gray-50">Roles & Overview</a>
+                    <a href="javascript:void(0)" onclick="showPage('executive')" class="block pl-14 py-3 text-sm border-b border-gray-50">Executive & Committee</a>
+                    <a href="javascript:void(0)" onclick="showPage('contacts')" class="block pl-14 py-3 text-sm border-b border-gray-50">Key Contacts 2024</a>
+                    <a href="javascript:void(0)" onclick="showPage('subscriptions')" class="block pl-14 py-3 text-sm border-b border-gray-50">Reg & Subscriptions</a>
+                </div>
+            </div>
+
+            <!-- Mentoring & Coaching -->
+            <div>
+                <button onclick="toggleNested('sec2-nested')" class="w-full flex items-center justify-between px-6 py-4 border-b border-gray-50 text-left">
+                    <div class="flex items-center">
+                        <i class="fas fa-graduation-cap w-8 text-wcc-red"></i>
+                        <span class="font-medium">Mentoring & Coaching</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs text-gray-400"></i>
+                </button>
+                <div id="sec2-nested" class="nested-menu-content">
+                    <a href="javascript:void(0)" onclick="showPage('role-mentor')" class="block pl-14 py-3 text-sm border-b border-gray-50">Role of the Mentor</a>
+                    <a href="javascript:void(0)" onclick="showPage('planning')" class="block pl-14 py-3 text-sm border-b border-gray-50">The Coaching Process</a>
+                    <a href="javascript:void(0)" onclick="showPage('pathway')" class="block pl-14 py-3 text-sm border-b border-gray-50">Player Pathway</a>
+                    <a href="javascript:void(0)" onclick="showPage('mentor-dev')" class="block pl-14 py-3 text-sm border-b border-gray-50">Mentor Qualifications</a>
+                </div>
+            </div>
+
+            <!-- Playing Games -->
+            <div>
+                <button onclick="toggleNested('sec3-nested')" class="w-full flex items-center justify-between px-6 py-4 border-b border-gray-50 text-left">
+                    <div class="flex items-center">
+                        <i class="fas fa-volleyball-ball w-8 text-wcc-red"></i>
+                        <span class="font-medium">Playing Games</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs text-gray-400"></i>
+                </button>
+                <div id="sec3-nested" class="nested-menu-content">
+                    <a href="javascript:void(0)" onclick="showPage('grading')" class="block pl-14 py-3 text-sm border-b border-gray-50">Team Grading (A-B-C)</a>
+                    <a href="javascript:void(0)" onclick="showPage('playing-within-age')" class="block pl-14 py-3 text-sm border-b border-gray-50">Playing Within Age</a>
+                    <a href="javascript:void(0)" onclick="showPage('rules')" class="block pl-14 py-3 text-sm border-b border-gray-50">Pitch & Filming Rules</a>
+                </div>
+            </div>
+
+            <!-- Administration -->
+            <div>
+                <button onclick="toggleNested('sec4-nested')" class="w-full flex items-center justify-between px-6 py-4 border-b border-gray-50 text-left">
+                    <div class="flex items-center">
+                        <i class="fas fa-folder-open w-8 text-wcc-red"></i>
+                        <span class="font-medium">Administration</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs text-gray-400"></i>
+                </button>
+                <div id="sec4-nested" class="nested-menu-content">
+                    <a href="javascript:void(0)" onclick="showPage('matchday')" class="block pl-14 py-3 text-sm border-b border-gray-50">Match Day Protocols</a>
+                    <a href="javascript:void(0)" onclick="showPage('medical')" class="block pl-14 py-3 text-sm border-b border-gray-50">Injury Scheme & Medical</a>
+                    <a href="javascript:void(0)" onclick="showPage('discipline')" class="block pl-14 py-3 text-sm border-b border-gray-50">Code of Behaviour</a>
+                </div>
+            </div>
+
+            <a href="javascript:void(0)" onclick="showPage('faq')" class="flex items-center px-6 py-4 border-b border-gray-50">
+                <i class="fas fa-question-circle w-8 text-wcc-red"></i>
+                <span class="font-medium">FAQ & Safeguarding</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="content-container" class="flex-grow p-4 max-w-md mx-auto w-full pb-8">
+        
+        <!-- HOME PAGE -->
+        <section id="page-home" class="page-content">
+            <div class="card border-t-4 border-wcc-red">
+                <h1 class="text-2xl font-bold text-gray-800 mb-2 text-center">Fáilte go Whitehall Colmcille</h1>
+                <p class="text-gray-600 mb-4 text-sm leading-relaxed text-center">
+                    The digital handbook for our Juvenile Section. Providing guidance for all mentors, parents, and players.
+                </p>
+                <div class="bg-red-50 p-4 rounded-lg">
+                    <h3 class="section-title">Club Vision</h3>
+                    <p class="text-sm italic text-center text-gray-700">"To provide a safe, enjoyable environment where every child can reach their potential through Gaelic Games, fostering a lifelong love for the club."</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm p-6">
+                <h2 class="font-bold mb-3 text-gray-800">Quick Navigation</h2>
+                <div class="grid grid-cols-1 gap-3">
+                    <div onclick="showPage('role-mentor')" class="flex items-center p-3 border rounded-lg active:bg-gray-100 transition-colors cursor-pointer touch-manipulation">
+                        <i class="fas fa-user-check text-wcc-red mr-3 w-5 text-center"></i>
+                        <span class="text-sm font-medium">Role of the Mentor</span>
+                    </div>
+                    <div onclick="showPage('grading')" class="flex items-center p-3 border rounded-lg active:bg-gray-100 transition-colors cursor-pointer touch-manipulation">
+                        <i class="fas fa-users-rectangle text-wcc-red mr-3 w-5 text-center"></i>
+                        <span class="text-sm font-medium">Team Grading Policy</span>
+                    </div>
+                    <div onclick="showPage('matchday')" class="flex items-center p-3 border rounded-lg active:bg-gray-100 transition-colors cursor-pointer touch-manipulation">
+                        <i class="fas fa-calendar-check text-wcc-red mr-3 w-5 text-center"></i>
+                        <span class="text-sm font-medium">Match Day Protocols</span>
+                    </div>
+                    <div onclick="showPage('planning')" class="flex items-center p-3 border rounded-lg active:bg-gray-100 transition-colors cursor-pointer touch-manipulation">
+                        <i class="fas fa-diagram-project text-wcc-red mr-3 w-5 text-center"></i>
+                        <span class="text-sm font-medium">Coaching Process</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROLES OVERVIEW -->
+        <section id="page-roles" class="page-content hidden">
+            <h2 class="text-xl font-bold mb-4">Juvenile Structure</h2>
+            <div class="space-y-4">
+                <div class="card">
+                    <h3 class="font-bold text-wcc-red">Juvenile Chairperson</h3>
+                    <p class="text-sm text-gray-700 mt-2 leading-tight">Leadership to the section and representative at main Club Executive level. Promotes the values of the club and oversees sub-committees.</p>
+                </div>
+                <div class="card">
+                    <h3 class="font-bold text-wcc-red">Juvenile Secretary</h3>
+                    <p class="text-sm text-gray-700 mt-2">Overall administration of the juvenile section, management of team leads, and adherence to club rules.</p>
+                </div>
+                <div class="card">
+                    <h3 class="font-bold text-wcc-red">Coordinators (Nursery, CCC1, CCC2)</h3>
+                    <p class="text-sm text-gray-700 mt-2">Oversee team registration, mentor ratification, and age-specific issues. Primary point of contact for team leads.</p>
+                </div>
+            </div>
+            <button onclick="showPage('home')" class="mt-4 w-full py-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-bold touch-manipulation">Return Home</button>
+        </section>
+
+        <!-- EXECUTIVE PAGE -->
+        <section id="page-executive" class="page-content hidden">
+            <h2 class="text-xl font-bold mb-4">Executive 2024</h2>
+            <div class="card">
+                <p class="text-sm text-gray-600 mb-4">The Juvenile Committee meets monthly to discuss development and logistics.</p>
+                <div class="space-y-3">
+                    <div class="flex justify-between border-b pb-2">
+                        <span class="text-sm font-bold">Chairperson</span>
+                        <span class="text-sm">Brendan Heery</span>
+                    </div>
+                    <div class="flex justify-between border-b pb-2">
+                        <span class="text-sm font-bold">Secretary</span>
+                        <span class="text-sm">Siobhán O'Reilly</span>
+                    </div>
+                    <div class="flex justify-between border-b pb-2">
+                        <span class="text-sm font-bold">PRO</span>
+                        <span class="text-sm">John Dunning</span>
+                    </div>
+                    <div class="flex justify-between border-b pb-2">
+                        <span class="text-sm font-bold">Registrar</span>
+                        <span class="text-sm">Eileen Murphy</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-red-50 p-4 rounded-lg">
+                <p class="text-xs text-red-800">Meetings usually take place on the second Tuesday of every month in the Clubhouse at 8:00pm.</p>
+            </div>
+            <button onclick="showPage('home')" class="mt-4 w-full py-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-bold touch-manipulation">Return Home</button>
+        </section>
+
+        <!-- SUBSCRIPTIONS & REGISTRATION -->
+        <section id="page-subscriptions" class="page-content hidden">
+            <h2 class="text-xl font-bold mb-4">Registration & Subs</h2>
+            <div class="card">
+                <h3 class="section-title">Registration Deadline</h3>
+                <p class="text-sm mb-4">All players and mentors must be registered by **March 31st** annually. This is mandatory for insurance purposes through the GAA Injury Scheme.</p>
+                
+                <h3 class="section-title">How to Register</h3>
+                <p class="text-sm mb-4">Registration is completed via the official club website or the ClubZap app. For assistance, contact the Registrar.</p>
+                
+                <div class="bg-yellow-50 p-3 rounded border border-yellow-200">
+                    <p class="text-xs text-yellow-800">**No Registration = No Play.** Mentors are responsible for ensuring every player on the pitch is registered.</p>
+                </div>
+            </div>
+            <button onclick="showPage('home')" class="mt-4 w-full py-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-bold touch-manipulation">Return Home</button>
+        </section>
+
+        <!-- ROLE OF THE MENTOR -->
+        <section id="page-role-mentor" class="page-content hidden">
+            <h2 class="text-xl font-bold mb-4">Role of the Mentor</h2>
+            <div class="card">
+                <h3 class="section-title">Key Responsibilities</h3>
+                <ul class="text-sm space-y-2 list-disc pl-4 text-gray-700">
+                    <li>Deliver the Player Pathway for your age group.</li>
+                    <li>Ensure every child gets equal playing time (U8-U12).</li>
+                    <li>Organize coaching sessions (ideally 2 per week).</li>
+                    <li>Communicate match details via ClubZap.</li>
+                    <li>Uphold the Give Respect / Get Respect initiative.</li>
+                </ul>
+            </div>
+            <div class="card bg-gray-50">
+                <h3 class="section-title">Vetting & Safeguarding</h3>
+                <p class="text-sm text-gray-700">Every mentor MUST have:
+                    <br>1. Current Garda Vetting
+                    <br>2. Safeguarding 1 Cert
+                    <br>3. Intro to Coaching Cert
+                </p>
+            </div>
+            <button onclick="showPage('home')" class="mt-4 w-full py-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-bold touch-manipulation">Return Home</button>
+        </section>
+
+        <!-- THE PROCESS OF PLANNING -->
+        <section id="page-planning" class="page-content hidden">
+            <h2 class="text-xl font-bold mb-4">The Coaching Process</h2>
+            <div class="space-y-4">
+                <div class="flex items-start gap-3 p-3 bg-white rounded-lg shadow-sm border">
+                    <div class="bg-wcc-red text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
+                    <div>
+                        <h4 class="font-bold text-sm">Review & Assess</h4>
+                        <p class="text-xs text-gray-600">Analyze the previous season. Identify gaps in technical or physical ability.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 bg-white rounded-lg shadow-sm border">
+                    <div class="bg-wcc-red text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">2</div>
+                    <div>
+                        <h4 class="font-bold text-sm">Define Objectives</h4>
+                        <p class="text-xs text-gray-600">Align goals with the Player Pathway. Focus on skill development over winning.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 bg-white rounded-lg shadow-sm border">
+                    <div class="bg-wcc-red text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">3</div>
+                    <div>
+                        <h4 class="font-bold text-sm">Implementation</h4>
+                        <p class="text-xs text-gray-600">Execute the 6-week blocks. Ensure maximum participation and enjoyment.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 bg-white rounded-lg shadow-sm border">
+                    <div class="bg-wcc-red text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">4</div>
+                    <div>
+                        <h4 class="font-bold text-sm">Evaluation</h4>
+                        <p class="text-xs text-gray-600">Mid-season review with coordinators to track progress against objectives.</p>
+                    </div>
+                </div>
+            </div>
+            <button onclick="showPage('home')" class="mt-4 w-full py-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-bold touch-manipulation">Return Home</button>
+        </section>
+
+        <!-- TEAM GRADING A-B-C -->
+        <section id="page-grading" class="page-content hidden">
+            <h2 class="text-xl font-bold mb-4">Team Grading Policy</h2>
+            <div class="card">
+                <p class="text-sm mb-4">We aim to place players in teams where they can compete and develop comfortably.</p>
+                <div class="space-y-3">
+                    <div class="p-3 border-l-4 border-green-500 bg-green-50">
+                        <h4 class="font-bold text-xs uppercase">Level A</h4>
+                        <p class="text-xs">Players with high technical and tactical proficiency. High intensity.</p>
+                    </div>
+                    <div class="p-3 border-l-4 border-yellow-500 bg-yellow-50">
+                        <h4 class="font-bold text-xs uppercase">Level B</h4>
+                        <p class="text-xs">Developing players aiming for competitive play while refining fundamentals.</p>
+                    </div>
+                    <div class="p-3 border-l-4 border-blue-500 bg-blue-50">
+                        <h4 class="font-bold text-xs uppercase">Level C</h4>
+                        <p class="text-xs">Participation-led squads focusing on core skills and social integration.</p>
+                    </div>
+                </div>
+                <p class="text-[10px] text-gray-500 mt-4 italic">Note: Movement between teams is possible and encouraged based on player progression.</p>
+            </div>
+            <button onclick="showPage('home')" class="mt-4 w-full py-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-bold touch-manipulation">Return Home</button>
+        </section>
+
+        <!-- RULES & LOGISTICS -->
+        <section id="page-rules" class="page-content hidden">
+            <h2 class="text-xl font-bold mb-4">Pitch & Filming Rules</h2>
+            <div class="card">
+                <h3 class="section-title">Filming Protocol</h3>
+                <p class="text-xs text-gray-700 mb-3">All conditions must be met to film U18 games:</p>
+                <ul class="text-xs space-y-2 list-disc pl-4 text-gray-600">
+                    <li>Parental permission for all players recorded.</li>
+                    <li>Opposing team mentors must agree in advance.</li>
+                    <li>Unedited copy must be provided to the committee on request.</li>
+                    <li>Fingal/DCC protocols apply for public parks.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 class="section-title">Pitch Care</h3>
+                <p class="text-xs text-gray-700">Respect our grounds. No training on match pitches unless authorized. Ensure all gates are locked after the final session.</p>
+            </div>
+            <button onclick="showPage('home')" class="mt-4 w-full py-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-bold touch-manipulation">Return Home</button>
+        </section>
+
+        <!-- MATCH DAY ADMIN -->
+        <section id="page-matchday" class="page-content hidden">
+            <h2 class="text-xl font-bold mb-4">Match Day Protocols</h2>
+            <div class="card">
+                <h3 class="section-title">The "Checklist"</h3>
+                <ul class="text-sm space-y-2 text-gray-700">
+                    <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> First Aid Kit present</li>
+                    <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Correct size sliotars/footballs</li>
+                    <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Respect the Referee</li>
+                    <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Match results texted to board</li>
+                </ul>
+            </div>
+            <div class="card bg-red-50">
+                <h3 class="section-title">Returning Results</h3>
+                <p class="text-xs">Results must be returned via SMS or App (depending on code) by 6:00pm on match day to avoid club fines.</p>
+            </div>
+            <button onclick="showPage('home')" class="mt-4 w-full py-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-bold touch-manipulation">Return Home</button>
+        </section>
+
+        <!-- FAQ & SAFEGUARDING -->
+        <section id="page-faq" class="page-content hidden">
+            <h2 class="text-xl font-bold mb-4">FAQ & Safeguarding</h2>
+            <div class="card">
+                <h3 class="section-title">Bullying Policy</h3>
+                <p class="text-sm text-gray-700 leading-relaxed">We adopt the official GAA Code of Behaviour. Any concerns should be directed to the Club Children’s Officer immediately.</p>
+            </div>
+            <div class="card border-l-4 border-wcc-red">
+                <h3 class="section-title">Injury Scheme FAQ</h3>
+                <p class="text-xs font-bold">Is a player covered if not registered?</p>
+                <p class="text-xs text-gray-600 mb-2">No. Unregistered players are not covered and should not be permitted to train or play.</p>
+                <p class="text-xs font-bold">How do I claim?</p>
+                <p class="text-xs text-gray-600">All claims must be initiated within 60 days of the injury via the Injury Claim form on the club portal.</p>
+            </div>
+            <button onclick="showPage('home')" class="mt-4 w-full py-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-bold touch-manipulation">Return Home</button>
+        </section>
+
+        <!-- PATHWAY PAGE -->
+        <section id="page-pathway" class="page-content hidden">
+            <h2 class="text-xl font-bold mb-4">Player Pathway</h2>
+            <div class="card">
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="font-bold text-wcc-red">Nursery (U4 - U7)</h4>
+                        <p class="text-sm">Emphasis on agility, balance, and coordination (ABC) through fun games.</p>
+                    </div>
+                    <div class="border-t pt-4">
+                        <h4 class="font-bold text-wcc-red">Go Games (U8 - U12)</h4>
+                        <p class="text-sm">Participation and skill development. Small-sided games ensure everyone touches the ball.</p>
+                    </div>
+                    <div class="border-t pt-4">
+                        <h4 class="font-bold text-wcc-red">Competitive (U13+)</h4>
+                        <p class="text-sm">Strategic play, tactical awareness, and preparing for adult-level competition.</p>
+                    </div>
+                </div>
+            </div>
+            <button onclick="showPage('home')" class="mt-4 w-full py-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-bold touch-manipulation">Return Home</button>
+        </section>
+
+        <!-- MENTOR DEV PAGE -->
+        <section id="page-mentor-dev" class="page-content hidden">
+            <h2 class="text-xl font-bold mb-4">Mentor Qualifications</h2>
+            <div class="card">
+                <h3 class="section-title">Required Courses</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm">Intro to Coaching</span>
+                        <span class="badge-red">Mandatory</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm">Award 1 (Child)</span>
+                        <span class="text-[10px] text-gray-400">Recommended</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm">Safeguarding 1</span>
+                        <span class="badge-red">Mandatory</span>
+                    </div>
+                </div>
+            </div>
+            <button onclick="showPage('home')" class="mt-4 w-full py-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-bold touch-manipulation">Return Home</button>
+        </section>
+
+    </main>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('menu-overlay');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('open');
+            overlay.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        function toggleNested(id) {
+            const el = document.getElementById(id);
+            const button = event.currentTarget;
+            const chevron = button.querySelector('.fa-chevron-down');
+            
+            // Close other nested menus
+            document.querySelectorAll('.nested-menu-content').forEach(menu => {
+                if(menu.id !== id) {
+                    menu.classList.remove('active');
+                    const otherBtn = menu.previousElementSibling;
+                    if(otherBtn) {
+                        const otherChev = otherBtn.querySelector('.fa-chevron-down');
+                        if(otherChev) otherChev.style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
+
+            el.classList.toggle('active');
+            if(chevron) chevron.style.transform = el.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        function showPage(pageId) {
+            // Prevent default behavior if triggered by an event
+            if (window.event) window.event.preventDefault();
+
+            window.scrollTo(0, 0);
+            
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.add('hidden');
+            });
+
+            // Show target page
+            const target = document.getElementById('page-' + pageId);
+            if (target) {
+                target.classList.remove('hidden');
+            } else {
+                document.getElementById('page-home').classList.remove('hidden');
+            }
+
+            // Close menu if open
+            if (mobileMenu.classList.contains('open')) {
+                toggleMenu();
+            }
+        }
+    </script>
+</body>
+</html>
