@@ -145,7 +145,7 @@
                 } else {
                     // This is a final page link
                     const link = document.createElement('a');
-                    link.href = `/${slugify(item.title)}.html`;
+                    link.href = `./${slugify(item.title)}.html`;
                     link.className = `block p-4 pl-6 text-gray-600 hover:text-wcc-red hover:bg-red-50 transition-colors border-l-4 border-transparent hover:border-wcc-red`;
                     link.innerText = item.title;
                     itemWrapper.appendChild(link);
@@ -168,7 +168,7 @@
                         title: item.title,
                         path: currentPath,
                         content: item.content,
-                        url: `/${slugify(item.title)}.html`
+                        url: `./${slugify(item.title)}.html`
                     });
                 }
             });
