@@ -3,29 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Executive Committee - WCC Handbook</title>
+    <title>WCC Juvenile Handbook Portal</title>
+    <link rel="stylesheet" href="/assets/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        :root { --wcc-red: #cc0000; }
-        .text-wcc-red { color: var(--wcc-red); }
-        .border-wcc-red { border-color: var(--wcc-red); }
-    </style>
+ 
 </head>
-<body class="bg-gray-50">
-    <header class="bg-white border-b-4 border-wcc-red p-4 shadow-sm">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="../index.html" class="text-wcc-red font-bold flex items-center">
-                ← Back to Menu
-            </a>
-            <img src="https://whitehallcolmcille.ie/wp-content/uploads/2019/06/logo.png" alt="WCC Logo" class="h-8">
+<body class="overflow-x-hidden">
+    <div id="navigation-container"></div>
+  
+    <!-- Main Landing Page Content -->
+    <main class="content-area p-6 md:p-12 max-w-4xl mx-auto flex flex-col justify-center items-center text-center">
+        <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 w-full">
+            <img src="https://whitehallcolmcille.ie/wp-content/uploads/2019/06/logo.png" alt="Logo" class="mx-auto h-24 mb-6">
+            <h1 class="text-3xl font-black text-gray-900 mb-2 uppercase tracking-tight">Referees</h1>
+            <p class="text-lg text-gray-500 mb-10">Details related to referees will go here</p>
         </div>
-    </header>
-
-    <main class="p-8 max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold text-gray-800 mb-4">Executive Committee</h1>
-        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 prose">
-            <p>Welcome to the Executive Committee section. Add your specific WCC details here.</p>
-        </div>
-    </main>
+    </main> 
+   <script>
+        fetch('/assets/nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-container').innerHTML = data;
+                // Load script.js AFTER navigation is inserted
+                const script = document.createElement('script');
+                script.src = '/assets/script.js';
+                document.body.appendChild(script);
+            });
+    </script>
 </body>
+   
 </html>
