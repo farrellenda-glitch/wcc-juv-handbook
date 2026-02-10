@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WCC Juvenile Handbook Portal</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/assets/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
  
 </head>
@@ -15,18 +15,18 @@
     <main class="content-area p-6 md:p-12 max-w-4xl mx-auto flex flex-col justify-center items-center text-center">
         <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 w-full">
             <img src="https://whitehallcolmcille.ie/wp-content/uploads/2019/06/logo.png" alt="Logo" class="mx-auto h-24 mb-6">
-            <h1 class="text-3xl font-black text-gray-900 mb-2 uppercase tracking-tight">Juvenile Handbook</h1>
-            <p class="text-lg text-gray-500 mb-10">Select a section from the menu or just search above.</p>
+            <h1 class="text-3xl font-black text-gray-900 mb-2 uppercase tracking-tight">Under 15 Feile Competitions</h1>
+            <p class="text-lg text-gray-500 mb-10">Details related to Under 15 Feile Competitions will go here</p>
         </div>
     </main> 
    <script>
-        fetch('/nav.html')
+        fetch('/assets/nav.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('navigation-container').innerHTML = data;
                 // Load script.js AFTER navigation is inserted
                 const script = document.createElement('script');
-                script.src = '/script.js';
+                script.src = '/assets/script.js';
                 document.body.appendChild(script);
             });
     </script>
