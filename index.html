@@ -34,17 +34,12 @@
         .level-1 { padding-left: 1.5rem; font-weight: 500; font-size: 0.95rem; border-left: 2px solid #eee; margin-left: 1rem; }
         .level-2 { padding-left: 1rem; font-weight: 400; font-size: 0.85rem; border-left: 1px dashed #ddd; margin-left: 2.2rem; color: #666; }
 
-        .active-link {
-            color: var(--wcc-red) !important;
-            background-color: #fff5f5;
-            border-left-color: var(--wcc-red) !important;
-        }
-
         /* Search Results Styling */
         .search-result-item {
             padding: 10px;
             border-bottom: 1px solid #eee;
-            cursor: pointer;
+            display: block;
+            text-decoration: none;
         }
         .search-result-item:hover {
             background-color: #f8f8f8;
@@ -53,7 +48,6 @@
 </head>
 <body class="overflow-x-hidden">
 
-    <!-- Top Navigation Bar -->
     <header class="bg-white border-b-4 border-wcc-red sticky top-0 z-40 shadow-md">
         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
             <button id="menuBtn" class="p-2 rounded-md text-wcc-red hover:bg-gray-100 focus:outline-none flex-shrink-0">
@@ -62,14 +56,12 @@
                 </svg>
             </button>
             
-            <!-- Search Bar Integration -->
             <div class="relative flex-grow max-w-md">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
                 <input type="text" id="searchInput" placeholder="Search handbook..." class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-full leading-5 bg-gray-50 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-wcc-red focus:border-wcc-red sm:text-sm transition-all">
                 
-                <!-- Search Dropdown -->
                 <div id="searchResults" class="absolute mt-2 w-full bg-white rounded-md shadow-lg border border-gray-200 hidden max-h-60 overflow-y-auto z-50"></div>
             </div>
             
@@ -79,10 +71,8 @@
         </div>
     </header>
 
-    <!-- Overlay -->
     <div id="overlay" class="fixed inset-0 bg-black opacity-50 hidden z-40" onclick="toggleMenu()"></div>
 
-    <!-- Sidebar Navigation -->
     <nav id="sidebar" class="fixed top-0 left-0 h-full w-80 bg-white shadow-2xl sidebar-closed overflow-y-auto">
         <div class="p-4 bg-wcc-red text-white flex justify-between items-center">
             <span class="font-bold text-lg">Handbook Sections</span>
@@ -90,33 +80,47 @@
         </div>
         
         <div class="py-2" id="menu-container">
-            <!-- Menu will be injected here -->
-        </div>
+            </div>
         
         <div class="p-8 text-center text-xs text-gray-400">
             © 2026 Whitehall Colmcille GAA
         </div>
     </nav>
 
-    <!-- Main Content Body -->
     <main class="content-area p-4 md:p-8 max-w-4xl mx-auto">
         <div id="page-content">
             <div class="text-center mt-20">
                 <img src="https://whitehallcolmcille.ie/wp-content/uploads/2019/06/logo.png" alt="Logo" class="mx-auto h-32 opacity-20 mb-4">
                 <h1 class="text-2xl font-bold text-gray-800 uppercase tracking-wide">Juvenile Handbook</h1>
                 <p class="text-gray-500 mt-2">Whitehall Colmcille GAA</p>
-                <div class="mt-8 p-4 border border-dashed border-gray-300 rounded text-sm text-gray-400">
-                    Use the search bar above or the menu icon in the top left to navigate through sections, roles, and facilities.
+                
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <h2 class="text-wcc-red font-bold mb-2">Getting Started</h2>
+                        <p class="text-sm text-gray-600">Open the side menu to browse by category. You can find everything from coaching pathways to pitch booking procedures.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <h2 class="text-wcc-red font-bold mb-2">Quick Search</h2>
+                        <p class="text-sm text-gray-600">Use the search bar at the top to jump directly to a specific role, facility name, or policy document.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
     <script>
+        // Utility to create URL slugs
+        function slugify(text) {
+            return text.toString().toLowerCase().trim()
+                .replace(/\s+/g, '-')
+                .replace(/[^\w\-]+/g, '')
+                .replace(/\-\-+/g, '-');
+        }
+
         // Menu Structure Data
         const menuData = [
             {
-                title: "HOME & VISION",
+                title: "Home & Vision",
                 content: "WCC Specific welcome and vision"
             },
             {
@@ -131,7 +135,7 @@
             {
                 title: "Mentoring & Coaching",
                 sub: [
-                    { title: "Role & Responsibilities", content: "Similar to Na F content (variety of sources in the doc)" },
+                    { title: "Role & Responsibilities", content: "Similar to Na F content" },
                     { title: "Membership & Registration", content: "WCC Specific content" },
                     { 
                         title: "Coaching", 
@@ -154,7 +158,7 @@
                     { title: "Roles & Responsibilities", content: "Similar to Na F content" },
                     { title: "Garda Vetting", content: "Similar to Na F content" },
                     { title: "Safeguarding", content: "Similar to Na F content" },
-                    { title: "Communications", content: "Similar to Na F content (including Social Media)" },
+                    { title: "Communications", content: "Social Media and Contact rules" },
                     { title: "Transport & Lifts", content: "Similar to Na F content" },
                     { title: "Away Trips", content: "Similar to Na F content" },
                     { title: "Photos & Filming", content: "Similar to Na F content" },
@@ -168,16 +172,16 @@
                         title: "Boys Games", 
                         sub: [
                             { title: "Calendar", content: "DCB and WCC Content" },
-                            { title: "CCC1 (up to u12)", content: "Similar to Na F content" },
-                            { title: "CCC2 (u13 to u16)", content: "Similar to Na F content" }
+                            { title: "CCC1", content: "Up to u12" },
+                            { title: "CCC2", content: "u13 to u16" }
                         ]
                     },
                     { 
                         title: "Girls Games", 
                         sub: [
-                            { title: "Calendar", content: "DCB and WCC Content" },
-                            { title: "CCC1 (up to u12)", content: "Similar to Na F content" },
-                            { title: "CCC2 (u13 to u16)", content: "Similar to Na F content" }
+                            { title: "Calendar", content: "LGFA and WCC Content" },
+                            { title: "CCC1", content: "Up to u12" },
+                            { title: "CCC2", content: "u13 to u16" }
                         ]
                     },
                     { title: "Referees", content: "Similar to Na F content" },
@@ -197,9 +201,13 @@
                     },
                     { title: "Defibrillators", content: "WCC Specific content by location" },
                     { title: "Ellenfield", content: "WCC Specific content" },
-                    { title: "Cloghran All Weather", content: "WCC Specific content" },
+                    { title: "Ellenfield All Weather", content: "WCC Specific content" },
                     { title: "Cloghran Grass", content: "WCC Specific content" },
-                    { title: "Clubhouse", content: "WCC Specific content" }
+                    { title: "Cloghran All Weather", content: "WCC Specific content" },
+                    { title: "Collins Ave", content: "WCC Specific content" },
+                    { title: "Belcamp", content: "WCC Specific content" },
+                    { title: "Lorcan Green", content: "WCC Specific content" },
+                    { title: "Indoor Arena", content: "WCC Specific content" }
                 ]
             }
         ];
@@ -208,7 +216,6 @@
         const overlay = document.getElementById('overlay');
         const menuBtn = document.getElementById('menuBtn');
         const menuContainer = document.getElementById('menu-container');
-        const pageContent = document.getElementById('page-content');
         const searchInput = document.getElementById('searchInput');
         const searchResults = document.getElementById('searchResults');
 
@@ -219,33 +226,7 @@
             overlay.classList.toggle('hidden', isOpen);
         }
 
-        function renderPage(title, content) {
-            pageContent.innerHTML = `
-                <div class="animate-fade-in">
-                    <h1 class="text-3xl font-bold text-wcc-red mb-6 border-b-2 border-gray-100 pb-2">${title}</h1>
-                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                        <div class="mb-4 text-xs font-bold text-gray-400 uppercase tracking-widest">Section Content Overview</div>
-                        <p class="text-gray-700 leading-relaxed text-lg">${content}</p>
-                        
-                        <div class="mt-12 space-y-4">
-                            <div class="h-px bg-gray-100 w-full"></div>
-                            <h3 class="font-bold text-gray-800">Handbook Notes</h3>
-                            <p class="text-sm text-gray-500 italic">This illustrative text is based on the ${title} requirements. Full documentation and official forms can be found in the club archives or via the Juvenile Secretary.</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-            // Hide search results if showing
-            searchResults.classList.add('hidden');
-            searchInput.value = '';
-            
-            // Check if menu is open, if so close it
-            if (sidebar.classList.contains('sidebar-open')) {
-                toggleMenu();
-            }
-            window.scrollTo(0, 0);
-        }
-
+        // Logic to build the menu with actual file links
         function buildMenu(data, level = 0) {
             const fragment = document.createDocumentFragment();
 
@@ -255,95 +236,10 @@
 
                 if (item.sub) {
                     const header = document.createElement('button');
-                    header.className = `w-full flex justify-between items-center p-4 text-left hover:bg-gray-50 transition-colors ${level === 0 ? 'text-gray-800 uppercase text-sm tracking-wider' : 'text-gray-600'}`;
+                    header.className = `w-full flex justify-between items-center p-4 text-left hover:bg-gray-50 transition-colors ${level === 0 ? 'text-gray-800 text-sm tracking-wider' : 'text-gray-600'}`;
                     header.innerHTML = `
                         <span>${item.title}</span>
                         <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     `;
 
-                    const subMenu = document.createElement('div');
-                    subMenu.className = "hidden transition-all duration-300 ease-in-out";
-                    
-                    header.onclick = (e) => {
-                        e.stopPropagation();
-                        const isHidden = subMenu.classList.contains('hidden');
-                        subMenu.classList.toggle('hidden');
-                        header.querySelector('svg').style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
-                    };
-
-                    subMenu.appendChild(buildMenu(item.sub, level + 1));
-                    itemContainer.appendChild(header);
-                    itemContainer.appendChild(subMenu);
-                } else {
-                    const link = document.createElement('button');
-                    link.className = `w-full text-left p-4 hover:text-wcc-red hover:bg-red-50 transition-all border-l-2 border-transparent`;
-                    link.innerText = item.title;
-                    link.onclick = () => renderPage(item.title, item.content || "Placeholder content for " + item.title);
-                    itemContainer.appendChild(link);
-                }
-                fragment.appendChild(itemContainer);
-            });
-
-            return fragment;
-        }
-
-        // Search Logic
-        function getAllLeafNodes(data, parentTitle = '') {
-            let nodes = [];
-            data.forEach(item => {
-                const fullTitle = parentTitle ? `${parentTitle} > ${item.title}` : item.title;
-                if (item.sub) {
-                    nodes = nodes.concat(getAllLeafNodes(item.sub, fullTitle));
-                } else {
-                    nodes.push({
-                        displayTitle: fullTitle,
-                        title: item.title,
-                        content: item.content || ''
-                    });
-                }
-            });
-            return nodes;
-        }
-
-        const searchableNodes = getAllLeafNodes(menuData);
-
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
-            if (query.length < 2) {
-                searchResults.classList.add('hidden');
-                return;
-            }
-
-            const matches = searchableNodes.filter(node => 
-                node.title.toLowerCase().includes(query) || 
-                node.content.toLowerCase().includes(query)
-            );
-
-            if (matches.length > 0) {
-                searchResults.innerHTML = matches.map(match => `
-                    <div class="search-result-item" onclick="renderPage('${match.title}', '${match.content}')">
-                        <div class="text-xs text-gray-400 font-semibold uppercase">${match.displayTitle.split(' > ').slice(0, -1).join(' > ')}</div>
-                        <div class="text-sm font-bold text-gray-800">${match.title}</div>
-                        <div class="text-xs text-gray-500 truncate">${match.content}</div>
-                    </div>
-                `).join('');
-                searchResults.classList.remove('hidden');
-            } else {
-                searchResults.innerHTML = `<div class="p-4 text-sm text-gray-500 italic text-center">No matches found</div>`;
-                searchResults.classList.remove('hidden');
-            }
-        });
-
-        // Close search when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-                searchResults.classList.add('hidden');
-            }
-        });
-
-        menuContainer.appendChild(buildMenu(menuData));
-        menuBtn.addEventListener('click', toggleMenu);
-
-    </script>
-</body>
-</html>
+                    const
