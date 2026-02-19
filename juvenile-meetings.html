@@ -10,15 +10,20 @@
 </head>
 <body class="overflow-x-hidden">
     <div id="navigation-container"></div>
-  
-    <!-- Main Landing Page Content -->
-    <main class="content-area p-6 md:p-12 max-w-4xl mx-auto flex flex-col justify-center items-center text-center">
-        <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 w-full">
-            <img src="https://whitehallcolmcille.ie/wp-content/uploads/2019/06/logo.png" alt="Logo" class="mx-auto h-24 mb-6">
-            <h1 class="text-3xl font-black text-gray-900 mb-2 uppercase tracking-tight">Juvenile Meetings</h1>
-            <p class="text-lg text-gray-500 mb-10">Details related to Juvenile Meetings and reporting will go here</p>
+ 
+    <main class="p-4 sm:p-6 md:p-12 max-w-3xl mx-auto">
+        <p class="mb-4 text-left">
+            Juvenile meetings are held once a month in the club. Juvenile director will share date & details via WhatsApp. Monthly reports should be submitted before each monthly meeting to the Juvenile Secretary via email. The link below is the template that should be used.
+        </p>
+        
+        <div class="mt-6">
+            <a href="https://docs.google.com/document/d/1exKqYJzlDypl4k0KWzmY-6OrDn9RLc7C/edit?usp=sharing&ouid=105345649754055013646&rtpof=true&sd=true" 
+             class="inline-block text-blue-600 hover:text-blue-800 font-medium underline">
+            Download the Monthly Report Template
+            </a>
         </div>
-    </main> 
+    </main>
+
    <script>
         fetch('./nav.html')
             .then(response => response.text())
