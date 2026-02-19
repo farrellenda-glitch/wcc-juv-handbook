@@ -10,15 +10,40 @@
 </head>
 <body class="overflow-x-hidden">
     <div id="navigation-container"></div>
-  
-    <!-- Main Landing Page Content -->
-    <main class="content-area p-6 md:p-12 max-w-4xl mx-auto flex flex-col justify-center items-center text-center">
-        <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 w-full">
-            <img src="https://whitehallcolmcille.ie/wp-content/uploads/2019/06/logo.png" alt="Logo" class="mx-auto h-24 mb-6">
-            <h1 class="text-3xl font-black text-gray-900 mb-2 uppercase tracking-tight">Executive Committee</h1>
-            <p class="text-lg text-gray-500 mb-10">Details of executive committee will go here.</p>
-        </div>
-    </main> 
+
+<div class="overflow-x-auto">
+  <table class="min-w-full border border-gray-200 divide-y divide-gray-200 text-left">
+    <thead class="bg-gray-50">
+      <tr>
+        <th class="px-4 py-2 border border-gray-200">Player Name</th>
+        <th class="px-4 py-2 border border-gray-200">Position</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      <tr>
+        <td class="px-4 py-2 border border-gray-200">John O'Sullivan</td>
+        <td class="px-4 py-2 border border-gray-200">Forward</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-2 border border-gray-200">Mary Byrne</td>
+        <td class="px-4 py-2 border border-gray-200">Midfield</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-2 border border-gray-200">Sean Murphy</td>
+        <td class="px-4 py-2 border border-gray-200">Defender</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-2 border border-gray-200">Aoife Kelly</td>
+        <td class="px-4 py-2 border border-gray-200">Goalkeeper</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-2 border border-gray-200">Liam Walsh</td>
+        <td class="px-4 py-2 border border-gray-200">Forward</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+ 
    <script>
         fetch('./nav.html')
             .then(response => response.text())
