@@ -15,7 +15,8 @@
                     { title: "Executive Committee", content: "WCC Executive Committee" },
                     { title: "Juvenile Roles", content: "Juvenile section coordinator and officers" },
                     { title: "Juvenile Meetings", content: "Reporting and meeting structures" },
-                    { title: "Team Contacts", content: "Mentor and lead contact lists" }
+                    { title: "Team Contacts Boys", content: "Boys mentor and contact lists" },
+                    { title: "Team Contacts Girls", content: "Girls mentor and contact lists" }
                 ]
             },
             {

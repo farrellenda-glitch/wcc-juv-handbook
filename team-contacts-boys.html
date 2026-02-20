@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCC Juvenile Handbook Portal</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+ 
+</head>
+<body class="overflow-x-hidden">
+    <div id="navigation-container"></div>
+
+    <div class="p-4 sm:p-6">
+    <div class="overflow-x-auto">
+
+    <table class="min-w-full border border-gray-200 divide-y divide-gray-200 text-left">
+        <thead class="bg-gray-50">
+            <tr>
+            <th class="px-4 py-2 border border-gray-200 font-semibold">Team</th>
+            <th class="px-4 py-2 border border-gray-200 font-semibold">Mentor Name</th>
+            <th class="px-4 py-2 border border-gray-200 font-semibold">Number</th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+            <tr>
+            <td class="px-4 py-2 border border-gray-200">U8 Hurling</td>
+            <td class="px-4 py-2 border border-gray-200">Caroline Enright</td>
+            <td class="px-4 py-2 border border-gray-200"> 
+                <a href="tel:+353861516658" class="text-blue-600 hover:text-blue-800 underline">
+                    +353861516658
+                </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="px-4 py-2 border border-gray-200">U9 Hurling</td>
+            <td class="px-4 py-2 border border-gray-200">John Bowe</td>
+            <td class="px-4 py-2 border border-gray-200"> 
+                <a href="tel:+353857304938" class="text-blue-600 hover:text-blue-800 underline">
+                    +353857304938
+                </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="px-4 py-2 border border-gray-200">U10 Hurling</td>
+            <td class="px-4 py-2 border border-gray-200">Eoin Campbell</td>
+            <td class="px-4 py-2 border border-gray-200"> 
+                <a href="tel:+353879781916" class="text-blue-600 hover:text-blue-800 underline">
+                    +353879781916
+                </a>
+            </td>
+            </tr>
+            <tr>
+           <td class="px-4 py-2 border border-gray-200">U11 Hurling</td>
+            <td class="px-4 py-2 border border-gray-200">Ed Gray</td>
+            <td class="px-4 py-2 border border-gray-200"> 
+                <a href="tel:+353831280243" class="text-blue-600 hover:text-blue-800 underline">
+                    +353831280243
+                </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="px-4 py-2 border border-gray-200">U12 Hurling</td>
+            <td class="px-4 py-2 border border-gray-200">Dermot Coffey</td>
+            <td class="px-4 py-2 border border-gray-200"> 
+                <a href="tel:+353860473201" class="text-blue-600 hover:text-blue-800 underline">
+                    +353860473201
+                </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="px-4 py-2 border border-gray-200">U13 Hurling</td>
+            <td class="px-4 py-2 border border-gray-200">Liam Joyce</td>
+            <td class="px-4 py-2 border border-gray-200"> 
+                <a href="tel:+353877636238" class="text-blue-600 hover:text-blue-800 underline">
+                    +353877636238
+                </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="px-4 py-2 border border-gray-200">U14 Hurling</td>
+            <td class="px-4 py-2 border border-gray-200">Alan Doddy</td>
+            <td class="px-4 py-2 border border-gray-200"> 
+                <a href="tel:+353879168331" class="text-blue-600 hover:text-blue-800 underline">
+                    +353879168331
+                </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="px-4 py-2 border border-gray-200">U15 Hurling</td>
+            <td class="px-4 py-2 border border-gray-200">Sean Cannon</td>
+            <td class="px-4 py-2 border border-gray-200"> 
+                <a href="tel:+353879192775" class="text-blue-600 hover:text-blue-800 underline">
+                    +353879192775
+                </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="px-4 py-2 border border-gray-200">U16 Hurling</td>
+            <td class="px-4 py-2 border border-gray-200">Enda Farrell</td>
+            <td class="px-4 py-2 border border-gray-200"> 
+                <a href="tel:+353876836820" class="text-blue-600 hover:text-blue-800 underline">
+                    +353876836820
+                </a>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    </div>
+
+   <script>
+        fetch('./nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-container').innerHTML = data;
+                // Load script.js AFTER navigation is inserted
+                const script = document.createElement('script');
+                script.src = './script.js';
+                document.body.appendChild(script);
+            });
+    </script>
+</body>
+   
+</html>

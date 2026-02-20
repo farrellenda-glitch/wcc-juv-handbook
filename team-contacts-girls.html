@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCC Juvenile Handbook Portal</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+ 
+</head>
+<body class="overflow-x-hidden">
+    <div id="navigation-container"></div>
+
+    <div class="p-4 sm:p-6">
+    <div class="overflow-x-auto">
+
+    <table class="min-w-full border border-gray-200 divide-y divide-gray-200 text-left">
+        <thead class="bg-gray-50">
+            <tr>
+            <th class="px-4 py-2 border border-gray-200 font-semibold">Team</th>
+            <th class="px-4 py-2 border border-gray-200 font-semibold">Mentor Name</th>
+            <th class="px-4 py-2 border border-gray-200 font-semibold">Number</th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+            <tr>
+            <td class="px-4 py-2 border border-gray-200">U8 Football</td>
+            <td class="px-4 py-2 border border-gray-200">TBC</td>
+            <td class="px-4 py-2 border border-gray-200"> 
+                <a href="tel:+353861234567" class="text-blue-600 hover:text-blue-800 underline">
+                    +353861234567
+                </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="px-4 py-2 border border-gray-200">U9 Football</td>
+            <td class="px-4 py-2 border border-gray-200">TBC</td>
+            <td class="px-4 py-2 border border-gray-200"> 
+                <a href="tel:+353861234567" class="text-blue-600 hover:text-blue-800 underline">
+                    +353861234567
+                </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="px-4 py-2 border border-gray-200">U10 Football</td>
+            <td class="px-4 py-2 border border-gray-200">TBC</td>
+            <td class="px-4 py-2 border border-gray-200"> 
+                <a href="tel:+353861234567" class="text-blue-600 hover:text-blue-800 underline">
+                   +353861234567
+                </a>
+            </td>
+            </tr>
+            <tr>
+           <td class="px-4 py-2 border border-gray-200">U11 Football</td>
+            <td class="px-4 py-2 border border-gray-200">TBC</td>
+            <td class="px-4 py-2 border border-gray-200"> 
+                <a href="tel:+353861234567" class="text-blue-600 hover:text-blue-800 underline">
+                    +353861234567
+                </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="px-4 py-2 border border-gray-200">U12 Football</td>
+            <td class="px-4 py-2 border border-gray-200">TBC</td>
+            <td class="px-4 py-2 border border-gray-200"> 
+                <a href="tel:+353861234567" class="text-blue-600 hover:text-blue-800 underline">
+                    +353861234567
+                </a>
+            </td>
+            </tr>
+        
+        </tbody>
+    </table>
+    </div>
+    </div>
+
+   <script>
+        fetch('./nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-container').innerHTML = data;
+                // Load script.js AFTER navigation is inserted
+                const script = document.createElement('script');
+                script.src = './script.js';
+                document.body.appendChild(script);
+            });
+    </script>
+</body>
+   
+</html>
