@@ -12,13 +12,22 @@
     <div id="navigation-container"></div>
   
     <!-- Main Landing Page Content -->
-    <main class="content-area p-6 md:p-12 max-w-4xl mx-auto flex flex-col justify-center items-center text-center">
-        <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 w-full">
-            <img src="https://whitehallcolmcille.ie/wp-content/uploads/2019/06/logo.png" alt="Logo" class="mx-auto h-24 mb-6">
-            <h1 class="text-3xl font-black text-gray-900 mb-2 uppercase tracking-tight">Membership and Registration</h1>
-            <p class="text-lg text-gray-500 mb-10">Details related to Membership and Registration will go here. </p>
+<main class="p-4 sm:p-6 md:p-12 max-w-3xl mx-auto">
+        <p class="mb-4 text-left">
+            Being a member of the club is a requirement for all those looking to take part in the activities of Whitehall Colmcille.
+        </p>
+        <p class="text-left">
+            Only paid up members will be registered, with the club and their relevant county board. Any player who has not paid the appropriate playing membership subscription will not be permitted to train or play matches - as they are not covered in any way in the event of an injury. All mentors and co-ordinators must be paid up members of the Club. Link for membership below.
+         </p>
+         
+         <div class="mt-6">
+            <a href="https://whitehallcolmcille.clubzap.com/membership_products" 
+             class="inline-block text-blue-600 hover:text-blue-800 font-medium underline">
+            Pay membership 
+            </a>
         </div>
-    </main> 
+
+    </main>
    <script>
         fetch('./nav.html')
             .then(response => response.text())
