@@ -48,8 +48,8 @@
                     { title: "Communications", content: "Contact rules for juvenile players" },
                     { title: "Transport & Lifts", content: "Safe travel procedures" },
                     { title: "Away Trips", content: "Overnight and travel guidelines" },
-                    { title: "Photos & Filming", content: "Consent and usage policy" },
-                    { title: "Challenge Games", content: "Permission and reporting" }
+                    { title: "Photos & Filming", content: "Consent and usage policy" }
+                  
                 ]
             },
             {
@@ -73,7 +73,8 @@
                     },
                     { title: "Referees", content: "Referee allocations and payments" },
                     { title: "Playing Within Age", content: "Rules on playing up" },
-                    { title: "Principles of Streaming", content: "Team selection guidelines" }
+                    { title: "Principles of Streaming", content: "Team selection guidelines" },
+                    { title: "Challenge Games", content: "Permission and reporting" }
                 ]
             },
             {
