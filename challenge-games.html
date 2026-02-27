@@ -12,13 +12,27 @@
     <div id="navigation-container"></div>
   
     <!-- Main Landing Page Content -->
-    <main class="content-area p-6 md:p-12 max-w-4xl mx-auto flex flex-col justify-center items-center text-center">
-        <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 w-full">
-            <img src="https://whitehallcolmcille.ie/wp-content/uploads/2019/06/logo.png" alt="Logo" class="mx-auto h-24 mb-6">
-            <h1 class="text-3xl font-black text-gray-900 mb-2 uppercase tracking-tight">Challenge Games</h1>
-            <p class="text-lg text-gray-500 mb-10">Details related to organising challenge games will go here</p>
+    <main class="p-4 sm:p-6 md:p-12 max-w-3xl mx-auto">
+        <p class="mb-4 text-left">
+           <strong>All Challenge Games </strong> need to be authorised by the county board. 
+           This authorisation starts by asking your section Secretary to submit the details below to the county board. 
+           This ensures all matches are covered by insurance. The county board will confirm by reply to the Secretary that all is in order.
+        </p>
+        <br>
+        <p class="mb-4 text-left">
+           The following details about the match should be included:
+        </p>
+        <div class="p-4 sm:p-6">
+            <ul class="list-disc pl-6 space-y-2 text-left">
+                <li>The Age Group eg. Under 13.</li>
+                <li>The Code eg. Hurling.</li>
+                <li>The Opposition and county if relevant eg. James Stephens, Kilkenny.</li>
+                <li>The Venue eg. Collins Avenue.</li>
+                <li>The Date and Time eg. 8th February 2026 at 3pm.</li>
+                <li>The Referee's Name eg. Danny Harrington.</li>
+            </ul>
         </div>
-    </main> 
+    </main>
    <script>
         fetch('./nav.html')
             .then(response => response.text())
