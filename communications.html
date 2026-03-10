@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCC Juvenile Handbook Portal</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+ 
+</head>
+<body class="overflow-x-hidden">
+    <div id="navigation-container"></div>
+  
+    <!-- Main Landing Page Content -->
+    <main class="p-4 sm:p-6 md:p-12 max-w-3xl mx-auto">
+        <p class="mb-4 text-left">
+            Mentors should never communicate by text, email or social media with an individual under the age of 18.
+        </p>
+        <p class="text-left">
+            All group messages/emails should be sent to parents. However, if a parent wishes the mentor to send the group message or email to a different number/email address to their own (i.e. the child) they must put this request in writing to the mentor. The mentor must retain this written request.
+        </p>
+        <br>
+         <p class="text-left">
+            If an underage player obtains a mentor's phone number or email address and attempts to make direct contact with the mentor, he/she must instruct the child not to do so and inform their parent/guardian of same. The mentor should also seek advice from the Children's Officer if this happens.
+        </p>
+        <br>
+         <p class="text-left">
+            The club has adopted the GAA Social Media Policies & Guidelines. Linked below.
+        </p>
+        <div class="mt-6">
+            <a href="https://www.gaa.ie/api/pdfs/image/upload/skjxfguu6n6lj6kx7fl2.pdf" 
+             class="inline-block text-blue-600 hover:text-blue-800 font-medium underline">
+            GAA Social Media Guidelines
+            </a>
+        </div>
+    </main>
+   <script>
+        fetch('./nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-container').innerHTML = data;
+                // Load script.js AFTER navigation is inserted
+                const script = document.createElement('script');
+                script.src = './script.js';
+                document.body.appendChild(script);
+            });
+    </script>
+</body>
+   
+</html>

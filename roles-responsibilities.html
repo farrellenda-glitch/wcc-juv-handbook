@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCC Juvenile Handbook Portal</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+ 
+</head>
+<body class="overflow-x-hidden">
+    <div id="navigation-container"></div>
+  
+    <!-- Main Landing Page Content -->
+<main class="p-4 sm:p-6 md:p-12 max-w-3xl mx-auto">
+        <p class="mb-4 text-left">
+            One of the most important responsibilities of being a mentor is having full awareness of and compliance with all child protection, safeguarding and Garda vetting processes and procedures. If at any stage anything is unclear or you need support don't hesitate to contact the club's Children's Officer whose contact details you can find here 
+            <a href="juvenile-roles.html" 
+             class="inline-block text-blue-600 hover:text-blue-800 font-medium underline">
+            Juvenile Roles
+            </a>
+        </p>
+        <p class="text-left">
+            There is more detail in the sub sections here but the key considerations for all mentors re. Child Protection are as follows:
+         </p>
+         <br>
+            <ol>
+                <li>
+                    <strong>Garda vetting</strong> – Every mentor in the group has to have completed and passed Garda vetting every 3 years. 
+                </li>
+                <br>
+                <li>
+                    <strong>Safeguarding training</strong> – Every mentor in the group is required to complete safe guarding training every 3 years.
+                </li>
+                <br>    
+                <li>
+                    <strong>Communications</strong> – Mentors should never communicate by text, email or social media with any player under the age of 18.
+                </li>
+                <br>    
+                <li>
+                    <strong>Transport and lifts</strong> – No mentor or any adult should be alone with a player under the age of 18 that is not a member of their own family.
+                </li>
+                <br>
+                <li>
+                    <strong>Away trips</strong> – If arranging away trips for matches or other activities you need to ensure mentor to child ratios are correct. This is 8:1 for under 12s and 10:1 for under 13+.
+                </li>
+                <br>
+               <li>
+                    <strong>Photos and filming</strong> – Assume consent is required from parents, opposing teams and county board before photogrpahing or filming any children.
+                </li>
+                <br>
+            </ol> 
+
+</main>
+   <script>
+        fetch('./nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-container').innerHTML = data;
+                // Load script.js AFTER navigation is inserted
+                const script = document.createElement('script');
+                script.src = './script.js';
+                document.body.appendChild(script);
+            });
+    </script>
+</body>
+   
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCC Juvenile Handbook Portal</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+ 
+</head>
+<body class="overflow-x-hidden">
+    <div id="navigation-container"></div>
+  
+    <!-- Main Landing Page Content -->
+     <main class="p-4 sm:p-6 md:p-12 max-w-3xl mx-auto">
+        <p class="mb-4 text-left">
+            All mentors should ensure that young people and children benefit significantly from our games by providing a positive, healthy and encouraging ethos for all. In developing the skills levels of every player you should always encourage enjoyment, fun and participation in our games and activities. Coaches should always remember that they are role models for the players in their care. 
+        </p>
+        <p class="text-left">
+            Please see the full Mentor's code of conduct linked below but the key points include:
+         </p>
+         <br>
+            <ol>
+                <li>
+                    <strong>Adopt a child-centred approach</strong> – Promote enjoyment, participation, skill development and self-esteem while respecting every child equally, regardless of background or ability.
+                </li>
+                <br>
+                <li>
+                    <strong>Prioritise development over winning</strong> – Focus on improvement, learning and personal satisfaction rather than medals, trophies or competition outcomes.
+                </li>
+                <br>    
+                <li>
+                    <strong>Lead by example</strong> – Model respectful behaviour, promote Fair Play, avoid inappropriate language or substances, and support match officials and parental involvement.
+                </li>
+                <br>    
+                <li>
+                    <strong>Maintain safe and respectful conduct</strong> – Never use physical punishment, shouting or ridicule; ensure appropriate physical contact; build relationships based on trust and mutual respect; challenge bullying in all forms.
+                </li>
+                <br>
+                <li>
+                    <strong>Protect boundaries</strong> – Avoid being alone with players, transporting them alone, individual texting, excessive one-to-one time, or situations that could compromise your role.
+                </li>
+                <br>
+                <li>
+                    <strong>Ensure best practice and player welfare</strong> – Maintain attendance and injury records, provide First Aid, prevent injured players from competing, ensure safe transport and communication, and maintain clean, safe facilities.
+                </li>
+            </ol> 
+         <div class="mt-6">
+            <a href="https://whitehallcolmcille.ie/wp-content/uploads/2025/02/Mentors-Code-Of-Conduct.doc" 
+             class="inline-block text-blue-600 hover:text-blue-800 font-medium underline">
+            Download the Mentors Code of Conduct
+            </a>
+           
+        </div>
+             <br>
+            <p class="text-left">
+            The following are also the responsibility of the mentor:
+            </p>
+        <div class="p-4 sm:p-6">
+            <ul class="list-disc pl-6 space-y-2 text-left">
+                <li>Organising and running training sessions.</li>
+                <li>Communicating time and venue of fixtures and ensuring sufficient numbers to field teams.</li>
+                <li>Organising and managing teams on match days.</li>
+                <li>Coaching &amp; developing juvenile players to the best of their ability.</li>
+                <li>Encouraging players to give the best of themselves for the team.</li>
+                <li>
+                Ensuring teams have necessary equipment to train and play Gaelic games in a safe environment, e.g.:
+                <ul class="list-disc pl-6 mt-2 space-y-1">
+                    <li>Footballs.</li>
+                    <li>Sliotars.</li>
+                    <li>Bibs.</li>
+                    <li>Cones.</li>
+                    <li>Stakes to tie down goals.</li>
+                </ul>
+                </li>
+                <li>Return of match results to County Board (mostly via email and automated text service).</li>
+                <li>Promoting and supporting the Club’s social and fundraising activities.</li>
+                <li>Ensuring that players’ time spent with you is a positive experience.</li>
+                <li>Establishing a Training and Development Plan for the year ahead.</li>
+                <li>Organising an annual meeting with the parents of the players.</li>
+            </ul>
+        </div>
+    </main>
+   <script>
+        fetch('./nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-container').innerHTML = data;
+                // Load script.js AFTER navigation is inserted
+                const script = document.createElement('script');
+                script.src = './script.js';
+                document.body.appendChild(script);
+            });
+    </script>
+</body>
+   
+</html>

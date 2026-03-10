@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCC Juvenile Handbook Portal</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+ 
+</head>
+<body class="overflow-x-hidden">
+    <div id="navigation-container"></div>
+  
+    <!-- Main Landing Page Content -->
+   <main class="p-4 sm:p-6 md:p-12 max-w-3xl mx-auto">
+        <p class="mb-4 text-left">
+            We prioritise participation and enjoyment over winning; the aim is many happy juvenile players rather than a few elite teams. 
+            Decisions re. Playing Up (both level and age) depend on specific circumstances and mentors should have clear guidelines and explain them to players and parents. 
+            County Board rules always apply, certain competitions such as Féile have fixed, named panels. 
+            Currently, boys’ competitions allow playing up or down (with fair play expected), while girls’ competitions restrict returning to the original team after playing up a set number of times. 
+            Mentors must consider all players fairly, and their decisions should be respected.
+        </p>
+        <p class="text-left">
+            <strong>Some guidelines governing Playing Up:</strong>
+        </p>
+        
+        <div class="p-4 sm:p-6">
+            <ul class="list-disc pl-6 space-y-2 text-left">
+                <li>Juveniles should train and play with their own year group.</li>
+                <li>Players may occasionally play one year up if both age-group managers & parents consent while older players are not deprived of game time.</li>
+                <li>Players playing up should be rotated, the same individuals should not be relied upon repeatedly.</li>
+                <li>If an age group struggles to field multiple teams, creating an additional panel with some younger players may be considered.</li>
+                <li>Ongoing support from a younger group (e.g., for B or C teams) should be agreed at the start of the year between mentors and the group coordinator, with formal permission.</li>
+                <li>In Camgoie & LGFA players who play up must do so at the same competitive level (e.g., A players at A level, B players at B level).</li>
+            </ul>
+        </div>
+        
+    </main>
+   <script>
+        fetch('./nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-container').innerHTML = data;
+                // Load script.js AFTER navigation is inserted
+                const script = document.createElement('script');
+                script.src = './script.js';
+                document.body.appendChild(script);
+            });
+    </script>
+</body>
+   
+</html>

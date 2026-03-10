@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCC Juvenile Handbook Portal</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+ 
+</head>
+<body class="overflow-x-hidden">
+    <div id="navigation-container"></div>
+  
+    <!-- Main Landing Page Content -->
+    <main class="p-4 sm:p-6 md:p-12 max-w-3xl mx-auto">
+        <p class="mb-4 text-left">
+            As a general principle, no adult should ever be alone with an under-18 young person who is not a member of their own family. This standard applies in every circumstance. One-to-one coaching discussions must always be conducted with the door open or with another approved (ratified) mentor present.
+        </p>
+        <p class="text-left">
+            This requirement also extends to providing lifts to and from matches or training sessions, which are an important part of club day to day life and activities. Ideally, transport should be provided by a parent of one of the children travelling, in which case vetting is not necessary. However, any adult offering transport who is not related to the young passengers must be Garda vetted and have completed Child Safeguarding Training. In all situations, a driver must not be alone in a vehicle with a person under 18.
+        </p>
+    </main>
+   <script>
+        fetch('./nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-container').innerHTML = data;
+                // Load script.js AFTER navigation is inserted
+                const script = document.createElement('script');
+                script.src = './script.js';
+                document.body.appendChild(script);
+            });
+    </script>
+</body>
+   
+</html>

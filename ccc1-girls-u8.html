@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCC Juvenile Handbook Portal</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+ 
+</head>
+<body class="overflow-x-hidden">
+    <div id="navigation-container"></div>
+  
+    <!-- Main Landing Page Content -->
+<main class="p-4 sm:p-6 md:p-12 max-w-3xl mx-auto">
+        <p class="mb-4 text-left">
+            CCC1 is the Dublin County Board body responsible for the organisation and administration of the younger juvenile age grades (Under 8 to Under 12) in Dublin GAA. It plays a central role in ensuring that games for children are run in a fair, structured and child-centred way. Under 8 to Under 11 operate on a Go Games blitz basis and graded individual team competitions start at Uunder 12.
+        </p>
+        <p class="text-left">
+            Their key responsibilities are as follows:
+         </p>
+         <br>
+            <ol>
+                <li>
+                    •  Organises and administers juvenile games/competitions.
+                </li>
+                
+                <li>
+                    •  Plans and publishes fixtures across football and hurling.
+                </li>
+                <li>
+                     •  Oversees team grading to ensure balanced and development-appropriate games.
+                </li>
+                <li>
+                    •  Implements Go Games principles with an emphasis on participation and enjoyment.
+                </li>
+                <li>
+                    •  Ensures compliance with age eligibility and competition regulations.
+                </li>
+               <li>
+                  •  Manages rescheduling, walkovers, and competition-related issues.
+                </li>
+                <li>
+                  •  Communicates rules, updates, and circulars to club juvenile secretary.
+                </li>
+                <li>
+                  •  Handles objections or disputes relating to CCC1 competitions.
+                </li>
+                <br>
+            </ol> 
+
+        <p class="text-left">
+            A link to CCC1 regulations can be found below and there are many other resources related to CCC1 activities on the Dublin GAA website:
+        </p>
+
+         <div class="mt-6">
+            <a href="https://d1cnc2w242mbew.cloudfront.net/f/311724/x/c33ce3021f/ccc1-regulations-for-2026.pdf" 
+             class="inline-block text-blue-600 hover:text-blue-800 font-medium underline">
+            Full CCC1 Regulations
+            </a>
+           
+        </div> 
+</main>
+   <script>
+        fetch('./nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-container').innerHTML = data;
+                // Load script.js AFTER navigation is inserted
+                const script = document.createElement('script');
+                script.src = './script.js';
+                document.body.appendChild(script);
+            });
+    </script>
+</body>
+   
+</html>

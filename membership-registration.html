@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCC Juvenile Handbook Portal</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+ 
+</head>
+<body class="overflow-x-hidden">
+    <div id="navigation-container"></div>
+  
+    <!-- Main Landing Page Content -->
+<main class="p-4 sm:p-6 md:p-12 max-w-3xl mx-auto">
+        <p class="mb-4 text-left">
+            Being a member of the club is a requirement for all those looking to take part in the activities of Whitehall Colmcille.
+        </p>
+        <p class="text-left">
+            Only paid up members will be registered, with the club and their relevant county board. Any player who has not paid the appropriate playing membership subscription will not be permitted to train or play matches - as they are not covered in any way in the event of an injury. All mentors and co-ordinators must be paid up members of the Club. Link for membership below.
+         </p>
+         
+         <div class="mt-6">
+            <a href="https://whitehallcolmcille.clubzap.com/membership_products" 
+             class="inline-block text-blue-600 hover:text-blue-800 font-medium underline">
+            Pay membership 
+            </a>
+        </div>
+
+    </main>
+   <script>
+        fetch('./nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-container').innerHTML = data;
+                // Load script.js AFTER navigation is inserted
+                const script = document.createElement('script');
+                script.src = './script.js';
+                document.body.appendChild(script);
+            });
+    </script>
+</body>
+   
+</html>
