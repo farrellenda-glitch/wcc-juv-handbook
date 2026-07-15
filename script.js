@@ -88,14 +88,15 @@
                         ]
                     },
                     { title: "Defibrillators", content: "AED locations at all club grounds" },
-                    { title: "Ellenfield Grass", content: "Pitch layout, access and facilities" },
-                    { title: "Ellenfield All Weather", content: "Pitch layout, access and facilities" },
-                    { title: "Cloghran", content: "Pitch layout, access and facilities" },
-                    { title: "Cloghran All Weather", content: "Pitch layout, access and facilities" },
-                    { title: "Collins Avenue", content: "Pitch layout, access and facilities" },
-                    { title: "Belcamp", content: "Pitch layout, access and facilities" },
-                    { title: "Lorcan Green", content: "Pitch layout, access and facilities" },
-                    { title: "Indoor Arena", content: "Winter training slots" }
+                    { title: "Ellenfield Grass", content: "Location and facilities" },
+                    { title: "Ellenfield All Weather", content: "Location and facilities" },
+                    { title: "Cloghran", content: "Location and facilities" },
+                    { title: "Cloghran All Weather", content: "Location and facilities" },
+                    { title: "Collins Avenue", content: "Location and facilities" },
+                    { title: "Saint Aidans", content: "Location and facilities" },
+                    { title: "Belcamp", content: "Location and facilities" },
+                    { title: "Lorcan Green", content: "Location and facilities" },
+                    { title: "Indoor Arena", content: "Location and facilities" }
                 ]
             }
         ];
