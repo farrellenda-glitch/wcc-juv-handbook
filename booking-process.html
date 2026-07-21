@@ -12,13 +12,23 @@
     <div id="navigation-container"></div>
   
     <!-- Main Landing Page Content -->
-    <main class="content-area p-6 md:p-12 max-w-4xl mx-auto flex flex-col justify-center items-center text-center">
-        <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 w-full">
-            <img src="https://whitehallcolmcille.ie/wp-content/uploads/2019/06/logo.png" alt="Logo" class="mx-auto h-24 mb-6">
-            <h1 class="text-3xl font-black text-gray-900 mb-2 uppercase tracking-tight">Pitch Booking</h1>
-            <p class="text-lg text-gray-500 mb-10">Details of pitch booking process will go here.</p>
+    <main class="p-4 sm:p-6 md:p-12 max-w-3xl mx-auto">
+        <p class="mb-4 text-left">
+            The pitch co-ordinator (contact details below) publishes a weekly schedule that incorporates allocated training slots on all pitches and factors in that week's fixtures and any playability and seasonal factors. Any additional changes or requests should be made directly to the pitch co-ordinator. An up to date spreadhseet with the pitch schedule for the week is available on the club website and also linked below.
+        </p>
+         <p class="mb-4 text-left">
+            
+            Sean Hogan
+        <a href="tel:+353851743592" class="text-blue-600 hover:text-blue-800 underline">
+                    +353851743592
+                </a>
+        <div class="mt-6">
+            <a href="https://docs.google.com/spreadsheets/d/1cCwhywJipHCav7OyAiOqs7ZlrTqhCrWf-0DJoy6c_m0/edit" 
+             class="inline-block text-blue-600 hover:text-blue-800 font-medium underline">
+            Current pitch schedule
+            </a>
         </div>
-    </main> 
+    </main>
    <script>
         fetch('./nav.html')
             .then(response => response.text())
